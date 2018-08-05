@@ -5,7 +5,34 @@
   "content" : {
     "comments" : "",
     "componentType" : "PROCESS_GROUP",
-    "connections" : [ ],
+    "connections" : [ {
+      "backPressureDataSizeThreshold" : "1 GB",
+      "backPressureObjectThreshold" : 10000,
+      "bends" : [ ],
+      "componentType" : "CONNECTION",
+      "destination" : {
+        "comments" : "",
+        "groupId" : "0b25e0e5-0165-1000-0000-00000b7219a4",
+        "id" : "e59b7c17-f42b-338b-a05b-e59657b8fdce",
+        "name" : "PutGCSObject",
+        "type" : "PROCESSOR"
+      },
+      "flowFileExpiration" : "0 sec",
+      "groupIdentifier" : "f71bd5ca-577f-3095-9aec-3bf431b28d59",
+      "identifier" : "94a2f26d-baca-3eab-8bc5-7f7d06b991f0",
+      "labelIndex" : 1,
+      "name" : "",
+      "prioritizers" : [ ],
+      "selectedRelationships" : [ "success" ],
+      "source" : {
+        "comments" : "",
+        "groupId" : "0b25e0e5-0165-1000-0000-00000b7219a4",
+        "id" : "b10d8e13-e19a-3164-9517-ebf3c82c0b43",
+        "name" : "ListFile",
+        "type" : "PROCESSOR"
+      },
+      "zIndex" : 0
+    } ],
     "controllerServices" : [ ],
     "funnels" : [ ],
     "identifier" : "f71bd5ca-577f-3095-9aec-3bf431b28d59",
@@ -18,7 +45,236 @@
       "y" : 324.0
     },
     "processGroups" : [ ],
-    "processors" : [ ],
+    "processors" : [ {
+      "autoTerminatedRelationships" : [ ],
+      "bulletinLevel" : "WARN",
+      "bundle" : {
+        "artifact" : "nifi-gcp-nar",
+        "group" : "org.apache.nifi",
+        "version" : "1.7.1"
+      },
+      "comments" : "",
+      "componentType" : "PROCESSOR",
+      "concurrentlySchedulableTaskCount" : 1,
+      "executionNode" : "ALL",
+      "groupIdentifier" : "f71bd5ca-577f-3095-9aec-3bf431b28d59",
+      "identifier" : "e59b7c17-f42b-338b-a05b-e59657b8fdce",
+      "name" : "PutGCSObject",
+      "penaltyDuration" : "30 sec",
+      "position" : {
+        "x" : 816.0,
+        "y" : 519.0
+      },
+      "properties" : {
+        "gcp-retry-count" : "6",
+        "gcs-overwrite-object" : "true",
+        "gcs-content-type" : "${mime.type}",
+        "gcs-key" : "${filename}",
+        "gcs-bucket" : "${gcs.bucket}"
+      },
+      "propertyDescriptors" : {
+        "gcp-proxy-host" : {
+          "displayName" : "Proxy host",
+          "identifiesControllerService" : false,
+          "name" : "gcp-proxy-host",
+          "sensitive" : false
+        },
+        "gcs-content-disposition-type" : {
+          "displayName" : "Content Disposition Type",
+          "identifiesControllerService" : false,
+          "name" : "gcs-content-disposition-type",
+          "sensitive" : false
+        },
+        "gcp-retry-count" : {
+          "displayName" : "Number of retries",
+          "identifiesControllerService" : false,
+          "name" : "gcp-retry-count",
+          "sensitive" : false
+        },
+        "gcs-server-side-encryption-key" : {
+          "displayName" : "Server Side Encryption Key",
+          "identifiesControllerService" : false,
+          "name" : "gcs-server-side-encryption-key",
+          "sensitive" : false
+        },
+        "gcs-overwrite-object" : {
+          "displayName" : "Overwrite Object",
+          "identifiesControllerService" : false,
+          "name" : "gcs-overwrite-object",
+          "sensitive" : false
+        },
+        "gcs-object-md5" : {
+          "displayName" : "MD5 Hash",
+          "identifiesControllerService" : false,
+          "name" : "gcs-object-md5",
+          "sensitive" : false
+        },
+        "gcs-content-type" : {
+          "displayName" : "Content Type",
+          "identifiesControllerService" : false,
+          "name" : "gcs-content-type",
+          "sensitive" : false
+        },
+        "gcs-object-crc32c" : {
+          "displayName" : "CRC32C Checksum",
+          "identifiesControllerService" : false,
+          "name" : "gcs-object-crc32c",
+          "sensitive" : false
+        },
+        "gcp-project-id" : {
+          "displayName" : "Project ID",
+          "identifiesControllerService" : false,
+          "name" : "gcp-project-id",
+          "sensitive" : false
+        },
+        "GCP Credentials Provider Service" : {
+          "displayName" : "GCP Credentials Provider Service",
+          "identifiesControllerService" : true,
+          "name" : "GCP Credentials Provider Service",
+          "sensitive" : false
+        },
+        "gcs-key" : {
+          "displayName" : "Key",
+          "identifiesControllerService" : false,
+          "name" : "gcs-key",
+          "sensitive" : false
+        },
+        "gcp-proxy-port" : {
+          "displayName" : "Proxy port",
+          "identifiesControllerService" : false,
+          "name" : "gcp-proxy-port",
+          "sensitive" : false
+        },
+        "gcs-bucket" : {
+          "displayName" : "Bucket",
+          "identifiesControllerService" : false,
+          "name" : "gcs-bucket",
+          "sensitive" : false
+        },
+        "gcs-object-acl" : {
+          "displayName" : "Object ACL",
+          "identifiesControllerService" : false,
+          "name" : "gcs-object-acl",
+          "sensitive" : false
+        }
+      },
+      "runDurationMillis" : 0,
+      "schedulingPeriod" : "0 sec",
+      "schedulingStrategy" : "TIMER_DRIVEN",
+      "style" : { },
+      "type" : "org.apache.nifi.processors.gcp.storage.PutGCSObject",
+      "yieldDuration" : "1 sec"
+    }, {
+      "autoTerminatedRelationships" : [ ],
+      "bulletinLevel" : "WARN",
+      "bundle" : {
+        "artifact" : "nifi-standard-nar",
+        "group" : "org.apache.nifi",
+        "version" : "1.7.1"
+      },
+      "comments" : "",
+      "componentType" : "PROCESSOR",
+      "concurrentlySchedulableTaskCount" : 1,
+      "executionNode" : "ALL",
+      "groupIdentifier" : "f71bd5ca-577f-3095-9aec-3bf431b28d59",
+      "identifier" : "b10d8e13-e19a-3164-9517-ebf3c82c0b43",
+      "name" : "ListFile",
+      "penaltyDuration" : "30 sec",
+      "position" : {
+        "x" : 813.0,
+        "y" : 201.0
+      },
+      "properties" : {
+        "Input Directory Location" : "Local",
+        "Minimum File Age" : "0 sec",
+        "target-system-timestamp-precision" : "auto-detect",
+        "Minimum File Size" : "0 B",
+        "Ignore Hidden Files" : "true",
+        "Recurse Subdirectories" : "true",
+        "File Filter" : "[^\\.].*",
+        "Include File Attributes" : "true"
+      },
+      "propertyDescriptors" : {
+        "Input Directory Location" : {
+          "displayName" : "Input Directory Location",
+          "identifiesControllerService" : false,
+          "name" : "Input Directory Location",
+          "sensitive" : false
+        },
+        "Minimum File Age" : {
+          "displayName" : "Minimum File Age",
+          "identifiesControllerService" : false,
+          "name" : "Minimum File Age",
+          "sensitive" : false
+        },
+        "Input Directory" : {
+          "displayName" : "Input Directory",
+          "identifiesControllerService" : false,
+          "name" : "Input Directory",
+          "sensitive" : false
+        },
+        "Maximum File Age" : {
+          "displayName" : "Maximum File Age",
+          "identifiesControllerService" : false,
+          "name" : "Maximum File Age",
+          "sensitive" : false
+        },
+        "target-system-timestamp-precision" : {
+          "displayName" : "Target System Timestamp Precision",
+          "identifiesControllerService" : false,
+          "name" : "target-system-timestamp-precision",
+          "sensitive" : false
+        },
+        "Maximum File Size" : {
+          "displayName" : "Maximum File Size",
+          "identifiesControllerService" : false,
+          "name" : "Maximum File Size",
+          "sensitive" : false
+        },
+        "Minimum File Size" : {
+          "displayName" : "Minimum File Size",
+          "identifiesControllerService" : false,
+          "name" : "Minimum File Size",
+          "sensitive" : false
+        },
+        "Ignore Hidden Files" : {
+          "displayName" : "Ignore Hidden Files",
+          "identifiesControllerService" : false,
+          "name" : "Ignore Hidden Files",
+          "sensitive" : false
+        },
+        "Recurse Subdirectories" : {
+          "displayName" : "Recurse Subdirectories",
+          "identifiesControllerService" : false,
+          "name" : "Recurse Subdirectories",
+          "sensitive" : false
+        },
+        "File Filter" : {
+          "displayName" : "File Filter",
+          "identifiesControllerService" : false,
+          "name" : "File Filter",
+          "sensitive" : false
+        },
+        "Path Filter" : {
+          "displayName" : "Path Filter",
+          "identifiesControllerService" : false,
+          "name" : "Path Filter",
+          "sensitive" : false
+        },
+        "Include File Attributes" : {
+          "displayName" : "Include File Attributes",
+          "identifiesControllerService" : false,
+          "name" : "Include File Attributes",
+          "sensitive" : false
+        }
+      },
+      "runDurationMillis" : 0,
+      "schedulingPeriod" : "0 sec",
+      "schedulingStrategy" : "TIMER_DRIVEN",
+      "style" : { },
+      "type" : "org.apache.nifi.processors.standard.ListFile",
+      "yieldDuration" : "1 sec"
+    } ],
     "remoteProcessGroups" : [ ],
     "variables" : { }
   }
