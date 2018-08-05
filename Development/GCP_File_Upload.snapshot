@@ -1,0 +1,25 @@
+{
+  "header" : {
+    "dataModelVersion" : "2"
+  },
+  "content" : {
+    "comments" : "",
+    "componentType" : "PROCESS_GROUP",
+    "connections" : [ ],
+    "controllerServices" : [ ],
+    "funnels" : [ ],
+    "identifier" : "f71bd5ca-577f-3095-9aec-3bf431b28d59",
+    "inputPorts" : [ ],
+    "labels" : [ ],
+    "name" : "GCP_File_Upload",
+    "outputPorts" : [ ],
+    "position" : {
+      "x" : 626.0,
+      "y" : 324.0
+    },
+    "processGroups" : [ ],
+    "processors" : [ ],
+    "remoteProcessGroups" : [ ],
+    "variables" : { }
+  }
+}
